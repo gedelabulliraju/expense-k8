@@ -40,7 +40,7 @@ spec: # Service specification
     tier: db # Database tier label
     app: mysql # MySQL application label
   ports: # Ports for the service
-    -name: mysql # Name of the MySQL service port
+  - name: mysql # Name of the MySQL service port
     protocol: TCP # Protocol for the service
     port: 3306 # Port for the MySQL service
     targetPort: 3306 # Target port for the MySQL service

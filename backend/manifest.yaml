@@ -32,7 +32,7 @@ spec: # Deployment specification
         image: srlaf/backend:v1 # Backend container image
         envFrom: # Environment variables from ConfigMap
         - configMapRef: # Reference to the ConfigMap
-            name: mysql # Name of the ConfigMap
+            name: backend # Name of the ConfigMap
 ---
 kind: Service # Service for backend
 apiVersion: v1 # Service API version

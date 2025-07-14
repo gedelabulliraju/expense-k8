@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: app/v1
+metadata:
+  name: debug-pod # Name of the debug pod
+  namespace: expense # Namespace for the debug pod
+spec:
+  containers:
+  - name: debug-container # Name of the debug container
+    image: srlaf/debug:v1 # Debug container image

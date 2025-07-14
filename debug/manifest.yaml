@@ -1,5 +1,5 @@
 kind: Pod
-apiVersion: app/v1
+apiVersion: v1
 metadata:
   name: debug-pod # Name of the debug pod
   namespace: expense # Namespace for the debug pod

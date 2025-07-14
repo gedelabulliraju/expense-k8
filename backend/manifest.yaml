@@ -1,4 +1,4 @@
-kind: Configmap # ConfigMap for MySQL
+kind: ConfigMap # ConfigMap for MySQL
 apiVersion: v1 # ConfigMap API version
 metadata: # ConfigMap metadata
   name: backend # MySQL config map name
@@ -37,7 +37,7 @@ spec: # Deployment specification
             name: backend # Name of the ConfigMap
 ---
 kind: Service # Service for backend
-apiVersion: v1 # Service API version
+apiVersion: app/v1 # Service API version
 metadata: # Service metadata
   name: backend # MySQL service name
   namespace: expense # Namespace for the service

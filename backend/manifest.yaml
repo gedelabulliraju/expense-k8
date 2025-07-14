@@ -3,6 +3,7 @@ apiVersion: app/v1 # ConfigMap API version
 metadata: # ConfigMap metadata
   name: backend # MySQL config map name
   namespace: expense # Namespace for the config map
+data: # Data for the ConfigMap
 ---
 kind: Deployment # Deployment for MySQL
 apiVersion: apps/v1 # Deployment API version

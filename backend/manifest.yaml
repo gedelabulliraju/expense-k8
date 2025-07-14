@@ -1,4 +1,4 @@
-kind: configmap # ConfigMap for MySQL
+kind: Configmap # ConfigMap for MySQL
 apiVersion: app/v1 # ConfigMap API version
 metadata: # ConfigMap metadata
   name: backend # MySQL config map name

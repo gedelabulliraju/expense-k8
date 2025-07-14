@@ -22,11 +22,8 @@ spec: # Deployment specification
         app: frontend # Backend application label
     spec: # Pod specification
       containers: # list ofcontainers in the pod
-      - name: backend # Name of the Backend container
-        image: srlaf/backend:v1 # Backend container image
-        envFrom: # Environment variables from ConfigMap
-        - configMapRef: # Reference to the ConfigMap
-            name: backend # Name of the ConfigMap
+      - name: frontend # Name of the Backend container
+        image: srlaf/frontend:v1 # Backend container image
 ---
 kind: Service # Service for backend
 apiVersion: v1 # Service API version
@@ -44,7 +41,7 @@ spec: # Service specification
     tier: web # API tier label
     app: frontend # Backend application label
   ports: # Ports for the service
-  - name: backend # Name of the backend service port
+  - name: frontend # Name of the backend service port
     protocol: TCP # Protocol for the service
     port: 80 # Port for the backend service
     targetPort: 80 # Target port for the backend service

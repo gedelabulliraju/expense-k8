@@ -19,7 +19,7 @@ spec: # Deployment specification
       labels: # Labels for the pod
         project: expense # MySQL project label
         tier: web # API tier label
-    app: frontend # Backend application label
+        app: frontend # Backend application label
     spec: # Pod specification
       containers: # list ofcontainers in the pod
       - name: backend # Name of the Backend container

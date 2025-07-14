@@ -3,8 +3,6 @@ apiVersion: app/v1 # ConfigMap API version
 metadata: # ConfigMap metadata
   name: backend # MySQL config map name
   namespace: expense # Namespace for the config map
-data: # Data for the ConfigMap
-  DB_HOST: mysql # MySQL host environment variable
 ---
 kind: Deployment # Deployment for MySQL
 apiVersion: apps/v1 # Deployment API version
@@ -34,7 +32,7 @@ spec: # Deployment specification
         image: srlaf/backend:v1 # Backend container image
         envFrom: # Environment variables from ConfigMap
         - configMapRef: # Reference to the ConfigMap
-            name: backend # Name of the ConfigMap
+            name: mysql # Name of the ConfigMap
 ---
 kind: Service # Service for backend
 apiVersion: v1 # Service API version

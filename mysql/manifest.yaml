@@ -1,0 +1,46 @@
+kind: Deployment # Deployment for MySQL
+apiVersion: apps/v1 # Deployment API version
+metadata: # Deployment metadata
+  name: mysql # MySQL deployment name
+  namespace: expense # Namespace for the deployment
+  labels: # Labels for the deployment
+    project: expense # MySQL project label
+    tier: db # Database tier label
+    app: mysql # MySQL application label
+spec: # Deployment specification
+  replicas: 1 # Number of MySQL replicas
+  selector: # Selector to match the MySQL pods
+    matchLabels: # Labels to match MySQL pods
+      project: expense # MySQL project label
+      tier: db # Database tier label
+      app: mysql # MySQL application label
+  template: # Template for the MySQL pod
+    metadata: # Pod metadata
+      labels: # Labels for the pod
+        project: expense # MySQL project label
+        tier: db # Database tier label
+        app: mysql # MySQL application label
+    spec: # Pod specification
+      containers: # list ofcontainers in the pod
+      - name: mysql # Name of the MySQL container
+        image: srlaf/mysql:v1 # MySQL container image
+---
+kind: Service # Service for MySQL
+apiVersion: v1 # Service API version
+metadata: # Service metadata
+  name: mysql # MySQL service name
+  namespace: expense # Namespace for the service
+  labels: # Labels for the service
+    project: expense # MySQL project label
+    tier: db # Database tier label
+    app: mysql # MySQL application label
+spec: # Service specification
+  selector: # Selector to match the MySQL pods
+    project: expense # MySQL project label
+    tier: db # Database tier label
+    app: mysql # MySQL application label
+  ports: # Ports for the service
+    -name: mysql # Name of the MySQL service port
+    protocol: TCP # Protocol for the service
+    port: 3306 # Port for the MySQL service
+    targetPort: 3306 # Target port for the MySQL service

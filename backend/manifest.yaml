@@ -4,6 +4,7 @@ metadata: # ConfigMap metadata
   name: backend # MySQL config map name
   namespace: expense # Namespace for the config map
 data: # Data for the ConfigMap
+  DB_HOST: mysql # MySQL host
 ---
 kind: Deployment # Deployment for MySQL
 apiVersion: apps/v1 # Deployment API version

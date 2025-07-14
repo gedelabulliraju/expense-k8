@@ -1,8 +1,9 @@
 kind: configmap # ConfigMap for MySQL
 apiVersion: app/v1 # ConfigMap API version
 metadata: # ConfigMap metadata
-  name: mysql # MySQL config map name
+  name: backend # MySQL config map name
   namespace: expense # Namespace for the config map
+DB_HOST: mysql # MySQL host environment variable
 ---
 kind: Deployment # Deployment for MySQL
 apiVersion: apps/v1 # Deployment API version

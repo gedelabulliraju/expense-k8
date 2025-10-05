@@ -23,7 +23,7 @@ spec: # Deployment specification
     spec: # Pod specification
       containers: # list ofcontainers in the pod
       - name: mysql # Name of the MySQL container
-        image: joindevops/mysql:v1 # MySQL container image
+        image: srlaf/mysql:v1 # MySQL container image
 ---
 kind: Service # Service for MySQL
 apiVersion: v1 # Service API version

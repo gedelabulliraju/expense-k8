@@ -4,20 +4,17 @@ metadata: # Deployment metadata
   name: backend # Backend deployment name
   namespace: expense # Namespace for the deployment
   labels: # Labels for the deployment
-    project: expense # MySQL project label
     tier: api # API tier label
     app: backend # Backend application label
 spec: # Deployment specification
   replicas: 2 # Number of MySQL replicas
   selector: # Selector to match the MySQL pods
-    matchLabels: # Labels to match MySQL pods
-      project: expense # MySQL project label
+    matchLabels: # Labels to match MySQL pod
       tier: api # API tier label
       app: backend # Backend application label
   template: # Template for the MySQL pod
     metadata: # Pod metadata
       labels: # Labels for the pod
-        project: expense # MySQL project label
         tier: api # API tier label
         app: backend # Backend application label
     spec: # Pod specification
@@ -31,12 +28,10 @@ metadata: # Service metadata
   name: backend # MySQL service name
   namespace: expense # Namespace for the service
   labels: # Labels for the service
-    project: expense # backend project label
     tier: api # API tier label
     app: backend # Backend application label
 spec: # Service specification
   selector: # Selector to match the backend pods
-    project: expense # backend project label
     tier: api # API tier label
     app: backend # Backend application label
   ports: # Ports for the service

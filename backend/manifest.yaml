@@ -1,3 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: expense
+  labels:
+    tier: api
+    app: backend
+data:
+  DB_HOST: mysql
+---
 kind: Deployment # Deployment for MySQL
 apiVersion: apps/v1 # Deployment API version
 metadata: # Deployment metadata

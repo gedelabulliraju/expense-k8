@@ -25,12 +25,12 @@ spec: # Deployment specification
       - name: mysql # Name of the MySQL container
         image: srlaf/mysql:v1 # MySQL container image
         readinessProbe:
-          tcpsocket:
+          tcpSocket:
             port: 3306
           initialDelaySeconds: 15
           periodSeconds: 10
         livenessProbe:
-          tcpsocket:
+          tcpSocket:
             port: 3306
           initialDelaySeconds: 30
           periodSeconds: 10

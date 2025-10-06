@@ -8,7 +8,7 @@ metadata: # Deployment metadata
     tier: db # Database tier label
     app: mysql # MySQL application label
 spec: # Deployment specification
-  replicas: 1 # Number of MySQL replicas
+  replicas: 2 # Number of MySQL replicas
   selector: # Selector to match the MySQL pods
     matchLabels: # Labels to match MySQL pods
       project: expense # MySQL project label
@@ -24,6 +24,16 @@ spec: # Deployment specification
       containers: # list ofcontainers in the pod
       - name: mysql # Name of the MySQL container
         image: srlaf/mysql:v1 # MySQL container image
+        readinessProbe:
+          tcpsocket:
+            port: 3306
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          tcpsocket:
+            port: 3306
+          initialDelaySeconds: 30
+          periodSeconds: 10
 ---
 kind: Service # Service for MySQL
 apiVersion: v1 # Service API version

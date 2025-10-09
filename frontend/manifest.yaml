@@ -115,23 +115,17 @@ spec:
         tier: web
         project: expense
     spec:
-      initContainers:
-      - name: wait-for-backend
-        image: busybox:1.28
-        command: ['sh', '-c', 'until nslookup backend; do echo waiting for backend; sleep 2; done;']
       containers:
       - name: frontend
         image: srlaf/frontend:v1
-        ports:
-        - containerPort: 8081
         resources:
           requests:
             cpu: 100m
             memory: 128Mi
           # limits is greater than or equal to requests
           limits:
-            cpu: 150m
-            memory: 180Mi
+            cpu: 100m
+            memory: 128Mi
         volumeMounts:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
@@ -160,7 +154,7 @@ spec:
   - name: frontend-port
     protocol: TCP
     port: 80 # service port
-    targetPort: 8081 # container port
+    targetPort: 80 # container port
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler

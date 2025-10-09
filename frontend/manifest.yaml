@@ -119,15 +119,15 @@ spec:
       - name: frontend
         image: srlaf/frontend:v1
         ports:
-        - containerPort: 8081
+        - containerPort: 80
         resources:
           requests:
             cpu: 100m
             memory: 128Mi
           # limits is greater than or equal to requests
           limits:
-            cpu: 100m
-            memory: 128Mi
+            cpu: 150m
+            memory: 180Mi
         volumeMounts:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
@@ -147,7 +147,7 @@ metadata:
   name: frontend
   namespace: expense
 spec:
-  #type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: frontend
     tier: web
@@ -155,8 +155,8 @@ spec:
   ports:
   - name: frontend-port
     protocol: TCP
-    port: 8081 # service port
-    targetPort: 8081 # container port
+    port: 80 # service port
+    targetPort: 80 # container port
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler

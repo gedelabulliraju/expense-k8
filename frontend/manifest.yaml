@@ -115,6 +115,10 @@ spec:
         tier: web
         project: expense
     spec:
+      initContainers:
+      - name: wait-for-backend
+        image: busybox:1.28
+        command: ['sh', '-c', 'until nslookup backend; do echo waiting for backend; sleep 2; done;']
       containers:
       - name: frontend
         image: srlaf/frontend:v1
